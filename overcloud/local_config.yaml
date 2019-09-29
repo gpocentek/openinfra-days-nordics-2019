@@ -1,0 +1,49 @@
+resource_registry:
+  OS::TripleO::Controller::Net::SoftwareConfig: nic-configs/controller.yaml
+  OS::TripleO::Compute::Net::SoftwareConfig: nic-configs/compute.yaml
+
+parameter_defaults:
+  OvercloudControllerFlavor: control
+  ControllerCount: 1
+  OvercloudComputeFlavor: compute
+  ComputeCount: 1
+
+  CloudDomain: openinfra.org
+
+  NtpServer:
+    - 0.pool.ntp.org
+    - 1.pool.ntp.org
+    - 2.pool.ntp.org
+    - 3.pool.ntp.org
+  DnsServers: [8.8.8.8]
+
+  # Neutron policy changes
+  NeutronApiPolicies:
+    neutron-create-port-aap:
+      key: "create_port:allowed_address_pairs"
+      value: ""
+    neutron-port-create-aap-mac:
+      key: "create_port:allowed_address_pairs:mac_address"
+      value: ""
+    neutron-port-create-aap-ip:
+      key: "create_port:allowed_address_pairs:ip_address"
+      value: ""
+    neutron-update-port-aap:
+      key: "update_port:allowed_address_pairs"
+      value: ""
+    neutron-port-update-aap-mac:
+      key: "update_port:allowed_address_pairs:mac_address"
+      value: ""
+    neutron-port-update-aap-ip:
+      key: "update_port:allowed_address_pairs:ip_address"
+      value: ""
+
+  # Controller custom settings for puppet
+  ControllerExtraConfig:
+    nova::ram_allocation_ratio: "1.0"
+    nova::cpu_allocation_ratio: "1.0"
+
+  # And for Compute
+  ComputeExtraConfig:
+    nova::ram_allocation_ratio: "1.0"
+    nova::cpu_allocation_ratio: "1.0"

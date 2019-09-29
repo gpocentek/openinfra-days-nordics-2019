@@ -1,0 +1,29 @@
+heat_template_version: stein
+
+parameters:
+  image:
+    type: string
+    description: Glance image to use
+
+resources:
+  script: 
+    type: OS::Heat::SoftwareConfig
+    properties:
+      config: |
+      #!/bin/bash
+
+      echo foo > /bar 
+
+  server:
+    type: OS::Nova::Server
+    properties:
+      image: {get_param: image}
+      flavor: m1.large
+      networks:
+      - network: default_network
+      user_data: {get_resource: script}
+
+outputs:
+  server_ip:
+    description: IP Address of the load-balanced server.
+    value: { get_attr: [server, first_address] }

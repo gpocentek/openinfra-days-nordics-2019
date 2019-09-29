@@ -1,0 +1,23 @@
+- name: External
+  name_lower: external
+  vip: true
+  ip_subnet: '10.8.15.0/24'
+  allocation_pools: [{'start': '10.8.15.10', 'end': '10.8.15.250'}]
+  gateway_ip: '10.8.15.1'
+  vlan: 815
+
+- name: InternalApi
+  name_lower: internal_api
+  vip: true
+  ip_subnet: '172.16.1.0/24'
+  allocation_pools: [{'start': '172.16.1.10', 'end': '172.16.1.250'}]
+  gateway_ip: '172.16.1.1'
+  vlan: 161
+
+- name: Tenant
+  name_lower: tenant
+  vip: false
+  ip_subnet: '172.16.2.0/24'
+  allocation_pools: [{'start': '172.16.2.10', 'end': '172.16.2.250'}]
+  gateway_ip: '172.16.2.1'
+  vlan: 162

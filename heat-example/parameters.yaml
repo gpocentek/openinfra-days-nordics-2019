@@ -1,0 +1,5 @@
+resource_registry:
+  OpenInfra::Server: server.yaml
+
+parameter_defaults:
+  image: "CentOS 7"

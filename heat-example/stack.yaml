@@ -1,0 +1,16 @@
+heat_template_version: stein
+
+parameters:
+  image:
+    type: string
+    description: Glance image to use
+  
+resources:
+  rg:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: 10
+      resource_def:
+        type: OpenInfra::Server
+        properties:
+          image: {get_param: image}

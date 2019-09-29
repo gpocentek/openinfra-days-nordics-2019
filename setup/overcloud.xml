@@ -1,0 +1,4 @@
+<network>
+  <name>overcloud</name>
+  <bridge/>
+</network>

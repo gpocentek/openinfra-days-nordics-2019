@@ -1,0 +1,26 @@
+{
+    "nodes": [
+        {
+            "capabilities": "profile:controller,boot_option:local",
+            "pm_type": "pxe_ipmitool",
+            "mac":[
+                "52:54:00:5d:8b:80"
+            ],
+            "pm_user": "tripleo",
+            "pm_password": "tripleo",
+            "pm_addr": "192.168.122.1",
+            "pm_port": "4001"
+        },
+        {
+            "capabilities": "profile:compute,boot_option:local",
+            "pm_type": "pxe_ipmitool",
+            "mac":[
+                "52:54:00:5d:8b:81"
+            ],
+            "pm_user": "tripleo",
+            "pm_password": "tripleo",
+            "pm_addr": "192.168.122.1",
+            "pm_port": "4002"
+        }
+    ]
+}
